@@ -1,0 +1,18 @@
+<% @posts.each do |post| %>
+    <% # #TODO hack!  %>
+    <% @post = post %>
+    <div class="blog-item">
+      <h3><%= post.title %></h3>
+      <p class="lead">
+        by <span class="text-info"><%= post.email %></span>
+      </p>
+      <p><span class="glyphicon glyphicon-time"></span> <%= time_ago_in_words(post.created_at) %></p>
+      <%== post.preview %>
+      <br />
+      <br />
+      <%= render 'manage' %>
+      <%= link_to 'Read...', post_path(@post), class: 'btn btn-primary' %>
+      <hr>
+    </div>
+<% end %>
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>

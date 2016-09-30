@@ -1,0 +1,36 @@
+<%= form_for(post) do |f| %>
+    <% if post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(post.errors.count, 'error') %> prohibited this post from being saved:</h2>
+
+          <ul>
+            <% post.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, autofocus: true, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :preview %><br/>
+      <%= f.text_area :preview, size: '20x10', class: 'form-control', maxlength: 1000 %>
+    </div>
+    <div class="form-group">
+      <%= f.label :body %><br/>
+      <%= f.text_area :body, size: '20x20', class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :published %>
+      <%= f.check_box :published %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
+<% end %>

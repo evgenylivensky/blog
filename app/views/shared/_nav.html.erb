@@ -1,0 +1,43 @@
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">TestBlog</a>
+    </div>
+    <!--
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    -->
+    <ul class="nav navbar-nav navbar-right">
+    <% if user_signed_in? %>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Signed as, <%= current_user.email %>
+              <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'New Post', new_post_path%></li>
+              <li><%= link_to 'My Posts', my_posts_path%></li>
+            </ul>
+          </li>
+          <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+              <span class="glyphicon glyphicon-log-out"></span> Exit
+          <% end %>
+        </li>
+    <% else %>
+          <li>
+            <%= link_to new_user_registration_path do %>
+                <span class="glyphicon glyphicon-user"></span> Sign Up
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path do %>
+                <span class="glyphicon glyphicon-log-in"></span> Sign In
+            <% end %>
+          </li>
+    <% end %>
+    </ul>
+  </div>
+</nav>

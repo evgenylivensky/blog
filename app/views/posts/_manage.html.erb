@@ -1,0 +1,7 @@
+<% if user_signed_in? and current_user.id == @post.user_id %>
+    <!--<div class="btn-group">-->
+      <span class="glyphicon glyphicon-eye-<%= @post.published ? 'open' : 'close' %>"></span>
+      <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' %>
+      <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    <!--</div>-->
+<% end%>
