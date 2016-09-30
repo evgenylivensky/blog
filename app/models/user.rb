@@ -8,6 +8,8 @@ class User < ApplicationRecord
   validates :password, confirmation: true
   validates :password, length: { minimum: 6 }
 
-  devise :database_authenticatable,
-         :registerable
+  has_many :posts
+  has_many :comments
+
+  devise :database_authenticatable, :registerable
 end

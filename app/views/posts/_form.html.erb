@@ -27,8 +27,14 @@
 
     <div class="form-group">
       <%= f.label :published %>
-      <%= f.check_box :published %>
+      <%= f.check_box :published, checked: post.new_record? || post.published  %>
     </div>
+
+    <% unless post.new_record? %>
+      <div class="form-group">
+        <%= select_datetime(post.created_at)%>
+      </div>
+    <% end %>
 
     <div class="actions">
       <%= f.submit class: 'btn btn-primary' %>

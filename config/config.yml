@@ -1,5 +1,7 @@
 defaults: &defaults
   blogs_per_page: 5
+  comments_per_page: 50
+  comment_edit_time: 15
 
 development:
   <<: *defaults

@@ -16,6 +16,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   def show
+    @comment = Comment.new
   end
 
   # GET /posts/new
@@ -42,7 +43,12 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1
   def update
-    if @post.update(post_params)
+    new_date = parse_date_time(params[:date])
+
+    @post.attributes = post_params
+    @post.created_at = new_date if new_date <= DateTime.now
+
+    if @post.save
       redirect_to @post, notice: 'Post was successfully updated.'
     else
       render :edit
@@ -59,7 +65,11 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find_by_id(params[:id])
-      render file: "#{Rails.root}/public/404.html", layout: false, status: 404 unless @post.present?
+      if @post.present?
+        @comments = @post.comments.order(id: :desc).paginate(page: params[:page], per_page: APP_CONFIG.comments_per_page)
+      else
+        render file: "#{Rails.root}/public/404.html", layout: false, status: 404 unless @post.present?
+      end
     end
 
     def test_perm

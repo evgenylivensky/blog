@@ -4,5 +4,9 @@ class Post < ApplicationRecord
 
   scope :published, ->    { where(published: true) }
   scope :by_owner,  ->(u) { where(user_id: u.id) }
-  scope :ordered,   ->    { order(id: :desc) }
+  scope :ordered,   ->    { order(created_at: :desc) }
+
+  has_many :comments, dependent: :destroy
+
+  belongs_to :user
 end

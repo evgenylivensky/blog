@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  post    'comments',     to: 'comments#create'
+  post    'comments/:id', to: 'comments#update'
+  delete  'comments/:id', to: 'comments#destroy'
+
+  resources :comments
+
   get '/posts/my', to: 'posts#my'
   resources :posts
 
@@ -11,6 +17,4 @@ Rails.application.routes.draw do
   get 'persons/profile', as: 'user_root'
 
   devise_for :users
-
-
 end

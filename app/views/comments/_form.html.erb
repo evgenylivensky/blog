@@ -1,0 +1,16 @@
+<div class="well">
+  <h4>Leave a Comment:</h4>
+  <% if user_signed_in? %>
+      <%= form_for(Comment.new) do |f| %>
+          <input type="hidden" name="comment[post_id]" value="<%= @post.id %>">
+          <div class="form-group">
+            <%= f.text_area :body, size: 'x3', class: 'form-control' %>
+          </div>
+          <div class="actions">
+            <%= f.submit class: 'btn btn-primary' %>
+          </div>
+      <% end %>
+  <% else %>
+      <%= link_to 'Sign In', new_user_session_path %> or <%= link_to 'Sign Up', new_user_registration_path %>
+  <% end %>
+</div>
