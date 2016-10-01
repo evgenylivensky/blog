@@ -1,0 +1,149 @@
+<head>
+  <title>TestBlogStatic</title>
+</head>
+<body>
+<style type="text/css">
+  body {
+    font-family: Impact,Haettenschweiler,"Franklin Gothic Bold",Charcoal,"Helvetica Inserat","Bitstream Vera Sans Bold","Arial Black","sans serif";
+  }
+
+  #slider-container {
+    width: 940px;
+    height: 348px;
+    padding: 21px 130px;
+    background: url("/slider/css/slider_bg.jpg") repeat-y;
+  }
+
+  .slides {
+    position: relative;
+    width: 940px;
+    height: 348px;
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+  }
+  .slide {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    padding: 0;
+    -webkit-transition: opacity 2s;
+    -moz-transition: opacity 2s;
+    -o-transition: opacity 2s;
+    transition: opacity 2s;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .active {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .slider-controls {
+    width: 880px;
+    padding: 20px;
+    position: relative;
+    margin-top: -120px;
+    z-index: 3;
+    background: url("/slider/css/controls_bg.png") repeat;
+    border-radius: 4px;
+    color: #fff;
+  }
+
+  .slider-controls a.btn-prev,
+  .slider-controls a.btn-next {
+    display: inline-block;
+    width: 30px;
+    height: 40px;
+    background-color: #1a1a1a;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    padding-left: 10px;
+  }
+
+  .slider-controls a.btn {
+    display: inline-block;
+    height: 18px;
+    background: url("/slider/css/btn_bg.jpg");
+    border-radius: 4px;
+    color: #622a00;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 #f8d699;
+    padding: 13px 32px;
+  }
+
+  .clear-fix {
+      clear: both;
+    }
+
+  .slider-controls span {
+    font-size: 15pt;
+  }
+</style>
+<script type="text/javascript">
+  var slider;
+
+  document.addEventListener('DOMContentLoaded', function () {
+    slider = new Slider('#slider-container');
+  });
+
+  function Slider(sliderId) {
+    var arr = document.querySelectorAll(sliderId + ' .slides .slide');
+    var cur = 0;
+
+    this.next = function () {
+      changeSlide(true);
+    }
+
+    this.prev = function () {
+      changeSlide(false);
+    }
+
+    function changeSlide(isNext) {
+      arr[cur].className = 'slide';
+      if (isNext) {
+        cur = (cur + 1) % arr.length;
+      }
+      else {
+        cur = cur == 0 ? cur = arr.length - 1 : cur - 1;
+      }
+      arr[cur].className = 'slide active';
+    }
+  }
+</script>
+<div id="slider-container">
+  <ul class="slides">
+    <li class="slide active"><img src="/slider/1.jpg" alt="осень"></li>
+    <li class="slide"><img src="/slider/2.jpg" alt="небо"></li>
+    <li class="slide"><img src="/slider/3.jpg" alt="камни"></li>
+  </ul>
+  <div class="slider-controls">
+    <div style="float: left; margin-right: 40px">
+      <a class="btn-prev" href="#" onclick="slider.prev()">&#171;</a>
+      <a class="btn-next" href="#" onclick="slider.next()">&#187;</a>
+    </div>
+    <div style="float: left; margin-right: 10px; width: 360px">
+      <span>Фотографиям вашего ребенка позавидуют даже звезды</span>
+    </div>
+    <div style="float: right">
+      <a class="btn" href="#">Начать обучение &#187;</a>
+    </div>
+    <div class="clear-fix"></div>
+  </div>
+</div>
+</body>
+</html>

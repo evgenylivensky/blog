@@ -5,7 +5,7 @@
   .tags4 { font-size: 1.6em; }
 </style>
 <div class="well">
-<h4>Tags</h4>
+<h2>Tags</h2>
 <% tag_cloud(Post.tag_counts_on(:tags), %w(tags1 tags2 tags3 tags4)) do |tag, tags_class| %>
     <%= link_to "##{tag.name}", "/tags/#{tag.name}", class: tags_class %>
 <% end %>

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_user!,  only: [:edit, :update, :destroy, :create, :new, :my]
+  before_action :authenticate_user!,  only: [:edit, :update, :destroy, :create, :new, :my]
   before_action :set_post,            only: [:edit, :update, :destroy, :show]
   before_action :test_perm,           only: [:edit, :update, :destroy]
 
@@ -10,7 +10,6 @@ class PostsController < ApplicationController
     else
       @posts = Post.published.ordered.paginate(page: params[:page], per_page: APP_CONFIG.blogs_per_page)
     end
-
   end
 
   # GET /my
