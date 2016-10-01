@@ -65,3 +65,5 @@ gem 'will_paginate', '3.1.3'
 gem 'will_paginate-bootstrap', '1.0.1'
 
 gem 'recursive-open-struct', '1.0.1'
+
+gem 'acts-as-taggable-on', '4.0'

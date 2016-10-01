@@ -5,7 +5,12 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.published.ordered.paginate(page: params[:page], per_page: APP_CONFIG.blogs_per_page)
+    if params[:tag]
+      @posts = Post.published.tagged_with(params[:tag]).paginate(page: params[:page], per_page: APP_CONFIG.blogs_per_page)
+    else
+      @posts = Post.published.ordered.paginate(page: params[:page], per_page: APP_CONFIG.blogs_per_page)
+    end
+
   end
 
   # GET /my
@@ -49,7 +54,7 @@ class PostsController < ApplicationController
     @post.created_at = new_date if new_date <= DateTime.now
 
     if @post.save
-      redirect_to @post, notice: 'Post was successfully updated.'
+      redirect_to_referer
     else
       render :edit
     end
@@ -59,6 +64,10 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to posts_url, notice: 'Post was successfully destroyed.'
+  end
+
+  def tag_cloud
+    @tags = Post.tag_counts_on(:tags)
   end
 
   private
@@ -78,6 +87,6 @@ class PostsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def post_params
-      params.require(:post).permit(:published, :title, :body, :preview)
+      params.require(:post).permit(:published, :title, :body, :preview, :tag_list)
     end
 end

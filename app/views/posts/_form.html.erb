@@ -36,6 +36,11 @@
       </div>
     <% end %>
 
+    <div class="form-group">
+      <%= f.label :tag_list, 'Tags (space separated)' %><br />
+      <%= f.text_field :tag_list, class: 'form-control' %>
+    </div>
+
     <div class="actions">
       <%= f.submit class: 'btn btn-primary' %>
     </div>

@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 
   # POST /comments/1
   def update
-    @comment.update(comment_params)
+    @comment.update(comment_params) if @comment.perm_edit?(current_user)
     redirect_to_referer
   end
 
