@@ -2,14 +2,16 @@
 
 one:
   user_id: 1
-  email: MyString
-  published: false
-  title: MyString
-  body: MyText
+  email: user@user.ru
+  published: true
+  title: Post1
+  preview: Post1Preview
+  body: Post1Text
 
 two:
-  user_id: 1
-  email: MyString
+  user_id: 2
+  email: user2@user.ru
   published: false
-  title: MyString
-  body: MyText
+  title: Post2
+  preview: Post2Preview
+  body: Post2Text

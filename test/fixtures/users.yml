@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: MyString
-  encrypted_password: MyString
+  id: 1
+  email: user@user.ru
+  encrypted_password: $2a$11$Nut.A2LpSiB.RqXtmkunYuUb4N/hSgNFVvetq/fJR/epxaaTf1/IC
 
 two:
-  email: MyString
-  encrypted_password: MyString
+  id: 2
+  email: user2@user.ru
+  encrypted_password: $2a$11$5VZNfoLqdDOkJfgt5ysJnumMg.v8VJGH85cY9euoBYuSzFwV0kZkC

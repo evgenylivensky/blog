@@ -2,10 +2,24 @@
 
 one:
   post_id: 1
-  email: MyString
-  body: MyString
+  user_id: 1
+  email: user@user.ru
+  body: user comment post 1
 
 two:
   post_id: 1
-  email: MyString
-  body: MyString
+  user_id: 2
+  email: user2@user.ru
+  body: user2 comment post 1
+
+free:
+  post_id: 2
+  user_id: 1
+  email: user@user.ru
+  body: user comment post 2
+
+four:
+  post_id: 2
+  user_id: 2
+  email: user2@user.ru
+  body: user2 comment post 2

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate_user!,  only: [:update, :destroy, :create]
+  before_action :authenticate_user!,  only: [:update, :destroy, :create]
   before_action :set_comment,         only: [:update, :destroy]
 
   # POST /comments
