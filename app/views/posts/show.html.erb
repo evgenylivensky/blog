@@ -4,7 +4,7 @@
 </p>
 <hr>
 <p><span class="glyphicon glyphicon-time"></span> <%= time_ago_in_words(@post.created_at) %></p>
-<%== @post.body %>
+<%== simple_format(@post.body, {}, sanitize: true) %>
 <br />
 <br />
 <%= render 'manage' %>

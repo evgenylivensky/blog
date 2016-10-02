@@ -2,12 +2,14 @@
     <% # #TODO hack!  %>
     <% @post = post %>
     <div class="blog-item">
-      <h3><%= post.title %></h3>
+      <h3>
+        <%= link_to post.title, post_path(@post) %>
+      </h3>
       <p class="lead">
-        by <span class="text-info"><%= post.email %></span>
+        by <span><%= post.email %></span>
       </p>
       <p><span class="glyphicon glyphicon-time"></span> <%= time_ago_in_words(post.created_at) %></p>
-      <%== post.preview %>
+      <%== simple_format(post.preview, {}, sanitize: true) %>
       <br />
       <br />
       <%= render 'manage' %>

@@ -12,10 +12,4 @@ class Post < ApplicationRecord
 
   acts_as_taggable
   acts_as_taggable_on :tags
-
-  after_validation do |post|
-    r = /<script.*?>[\s\S]*<\/script>/i
-    post.preview.gsub! r, ''
-    post.body.gsub! r, ''
-  end
 end
